@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Liên hệ với chúng tôi để được tư vấn và hỗ trợ tốt nhất. Địa chỉ, số điện thoại, email và form liên hệ trực tuyến.">
+    <meta name="keywords" content="liên hệ, tư vấn, hỗ trợ khách hàng, địa chỉ công ty">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Liên Hệ - Tư Vấn và Hỗ Trợ Khách Hàng">
+    <meta property="og:description" content="Liên hệ với chúng tôi để được tư vấn và hỗ trợ tốt nhất">
+    <meta property="og:type" content="website">
+    <title>Liên Hệ - Tư Vấn và Hỗ Trợ Khách Hàng</title>
+    <link rel="canonical" href="https://yourwebsite.com/lien-he">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./asset/css/style.css">
+</head>
+<body>
+    <header class="doitenhinhanhsticky__header" id="doitenhinhanhsticky__header">
+        <!-- render header -->
+    </header>
+    <!-- Đoạn scrip render header -->
+    <script>
+        fetch('./templates/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector("#doitenhinhanhsticky__header").innerHTML = data;
+            })
+            .catch(error => console.error('Lỗi:', error));
+    </script>
+    <main class="dvnt-lienhe">
+        <!-- Header Section -->
+        <header class="dvnt-lienhe__header">
+            <div class="dvnt-lienhe__container">
+                <h1 class="dvnt-lienhe__title">Liên Hệ Với Tôi</h1>
+                <p class="dvnt-lienhe__subtitle">Để tôi cố gắng hết sức hỗ trợ bạn đến đoạn sông băng hà!</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <section class="dvnt-lienhe__content">
+            <div class="dvnt-lienhe__container">
+                <div class="dvnt-lienhe__grid">
+                    <!-- Contact Info -->
+                    <div class="dvnt-lienhe__info">
+                        <h2 class="dvnt-lienhe__info-title">Thông Tin Liên Hệ</h2>
+                        
+                        <div class="dvnt-lienhe__info-item">
+                            <div class="dvnt-lienhe__info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="dvnt-lienhe__info-content">
+                                <h3 class="dvnt-lienhe__info-label">Địa chỉ</h3>
+                                <p class="dvnt-lienhe__info-text">Cuộc sống vô gia cư!</p>
+                            </div>
+                        </div>
+
+                        <div class="dvnt-lienhe__info-item">
+                            <div class="dvnt-lienhe__info-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="dvnt-lienhe__info-content">
+                                <h3 class="dvnt-lienhe__info-label">Điện thoại</h3>
+                                <p class="dvnt-lienhe__info-text">
+                                    <a href="tel:+84909600114" class="dvnt-lienhe__info-link">+84909600114</a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="dvnt-lienhe__info-item">
+                            <div class="dvnt-lienhe__info-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="dvnt-lienhe__info-content">
+                                <h3 class="dvnt-lienhe__info-label">Email</h3>
+                                <p class="dvnt-lienhe__info-text">
+                                    <a href="mailto:info@company.com" class="dvnt-lienhe__info-link">doanvannhuthuat@gmail.com</a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="dvnt-lienhe__info-item">
+                            <div class="dvnt-lienhe__info-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="dvnt-lienhe__info-content">
+                                <h3 class="dvnt-lienhe__info-label">Giờ làm việc</h3>
+                                <p class="dvnt-lienhe__info-text">Thất thủ</p>
+                                <!-- <p class="dvnt-lienhe__info-text">Thứ 7: 8:00 - 12:00</p> -->
+                            </div>
+                        </div>
+
+                        <!-- Social Media -->
+                        <div class="dvnt-lienhe__social">
+                            <h3 class="dvnt-lienhe__social-title">Theo dõi chúng tôi</h3>
+                            <div class="dvnt-lienhe__social-links">
+                                <a href="https://www.facebook.com/kemuts1" class="dvnt-lienhe__social-link dvnt-lienhe__social-link--facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="https://www.instagram.com/doan_thuatt/" class="dvnt-lienhe__social-link dvnt-lienhe__social-link--instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <!-- <a href="#" class="dvnt-lienhe__social-link dvnt-lienhe__social-link--linkedin">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a> -->
+                                <a href="https://www.youtube.com/@dvntvlogs" class="dvnt-lienhe__social-link dvnt-lienhe__social-link--youtube">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="dvnt-lienhe__form-wrapper">
+                        <h2 class="dvnt-lienhe__form-title">Gửi Tin Nhắn</h2>
+                        <form class="dvnt-lienhe__form" id="contactForm" novalidate>
+                            <div class="dvnt-lienhe__form-row">
+                                <div class="dvnt-lienhe__form-group">
+                                    <label for="fullName" class="dvnt-lienhe__form-label">
+                                        Họ và tên <span class="dvnt-lienhe__form-required">*</span>
+                                    </label>
+                                    <input 
+                                        type="text" 
+                                        id="fullName" 
+                                        name="fullName" 
+                                        class="dvnt-lienhe__form-input" 
+                                        placeholder="Nhập họ và tên của bạn"
+                                        required
+                                    >
+                                    <span class="dvnt-lienhe__form-error"></span>
+                                </div>
+                                
+                                <div class="dvnt-lienhe__form-group">
+                                    <label for="email" class="dvnt-lienhe__form-label">
+                                        Email <span class="dvnt-lienhe__form-required">*</span>
+                                    </label>
+                                    <input 
+                                        type="email" 
+                                        id="email" 
+                                        name="email" 
+                                        class="dvnt-lienhe__form-input" 
+                                        placeholder="Nhập địa chỉ email"
+                                        required
+                                    >
+                                    <span class="dvnt-lienhe__form-error"></span>
+                                </div>
+                            </div>
+
+                            <div class="dvnt-lienhe__form-row">
+                                <div class="dvnt-lienhe__form-group">
+                                    <label for="phone" class="dvnt-lienhe__form-label">
+                                        Số điện thoại <span class="dvnt-lienhe__form-required">*</span>
+                                    </label>
+                                    <input 
+                                        type="tel" 
+                                        id="phone" 
+                                        name="phone" 
+                                        class="dvnt-lienhe__form-input" 
+                                        placeholder="Nhập số điện thoại"
+                                        required
+                                    >
+                                    <span class="dvnt-lienhe__form-error"></span>
+                                </div>
+                                
+                                <div class="dvnt-lienhe__form-group">
+                                    <label for="subject" class="dvnt-lienhe__form-label">Chủ đề</label>
+                                    <select id="subject" name="subject" class="dvnt-lienhe__form-select">
+                                        <option value="">Chọn chủ đề</option>
+                                        <option value="general">Tư vấn chung</option>
+                                        <option value="support">Hỗ trợ kỹ thuật</option>
+                                        <option value="partnership">Hợp tác kinh doanh</option>
+                                        <option value="other">Khác</option>
+                                    </select>
+                                    <span class="dvnt-lienhe__form-error"></span>
+                                </div>
+                            </div>
+
+                            <div class="dvnt-lienhe__form-group">
+                                <label for="message" class="dvnt-lienhe__form-label">
+                                    Tin nhắn <span class="dvnt-lienhe__form-required">*</span>
+                                </label>
+                                <textarea 
+                                    id="message" 
+                                    name="message" 
+                                    class="dvnt-lienhe__form-textarea" 
+                                    placeholder="Nhập nội dung tin nhắn của bạn..."
+                                    rows="5"
+                                    required
+                                ></textarea>
+                                <span class="dvnt-lienhe__form-error"></span>
+                            </div>
+
+                            <div class="dvnt-lienhe__form-group">
+                                <label class="dvnt-lienhe__form-checkbox">
+                                    <input type="checkbox" id="privacy" name="privacy" required>
+                                    <span class="dvnt-lienhe__form-checkmark"></span>
+                                    Tôi đồng ý với  <a href="#" class="dvnt-lienhe__form-link"> không thể gửi được tin nhắn^^</a>
+                                </label>
+                                <span class="dvnt-lienhe__form-error"></span>
+                            </div>
+
+                            <button type="submit" class="dvnt-lienhe__form-button">
+                                <span class="dvnt-lienhe__form-button-text">Gửi tin nhắn</span>
+                                <i class="fas fa-paper-plane dvnt-lienhe__form-button-icon"></i>
+                            </button>
+                        </form>
+
+                        <!-- Success/Error Messages -->
+                        <div class="dvnt-lienhe__message dvnt-lienhe__message--success" id="successMessage">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Tin nhắn đã được gửi thành công! Chúng tôi sẽ liên hệ lại với bạn sớm nhất.</span>
+                        </div>
+
+                        <div class="dvnt-lienhe__message dvnt-lienhe__message--error" id="errorMessage">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span>Có lỗi xảy ra khi gửi tin nhắn. Vui lòng thử lại sau.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section class="dvnt-lienhe__map">
+            <div class="dvnt-lienhe__container">
+                <h2 class="dvnt-lienhe__map-title">Vị Trí Của Chúng Tôi</h2>
+                <div class="dvnt-lienhe__map-wrapper">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.4326!2d106.692!3d10.776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDQ2JzMzLjYiTiAxMDbCsDQxJzMxLjIiRQ!5e0!3m2!1sen!2s!4v1234567890"
+                        class="dvnt-lienhe__map-iframe"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Vị trí công ty trên bản đồ">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="dvnt-footer" id="dvnt-footer"></footer>
+        <script>
+        fetch('./templates/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector("#dvnt-footer").innerHTML = data;
+            })
+            .catch(error => console.error('Lỗi:', error));
+    </script>
+    <script>
+        $(document).ready(function() {
+    // Form validation rules
+    const validationRules = {
+        fullName: {
+            required: true,
+            minLength: 2,
+            pattern: /^[a-zA-ZÀ-ỹ\s]+$/
+        },
+        email: {
+            required: true,
+            pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        },
+        phone: {
+            required: true,
+            pattern: /^[0-9]{10,11}$/
+        },
+        message: {
+            required: true,
+            minLength: 10
+        },
+        privacy: {
+            required: true
+        }
+    };
+
+    // Error messages
+    const errorMessages = {
+        fullName: {
+            required: 'Vui lòng nhập họ và tên',
+            minLength: 'Họ và tên phải có ít nhất 2 ký tự',
+            pattern: 'Họ và tên chỉ được chứa chữ cái và khoảng trắng'
+        },
+        email: {
+            required: 'Vui lòng nhập địa chỉ email',
+            pattern: 'Địa chỉ email không hợp lệ'
+        },
+        phone: {
+            required: 'Vui lòng nhập số điện thoại',
+            pattern: 'Số điện thoại phải có 10-11 chữ số'
+        },
+        message: {
+            required: 'Vui lòng nhập tin nhắn',
+            minLength: 'Tin nhắn phải có ít nhất 10 ký tự'
+        },
+        privacy: {
+            required: 'Vui lòng đồng ý với chính sách bảo mật'
+        }
+    };
+
+    // Validate single field
+    function validateField(fieldName, value, isCheckbox = false) {
+        const rules = validationRules[fieldName];
+        const messages = errorMessages[fieldName];
+        
+        if (!rules) return { isValid: true, message: '' };
+
+        // Required validation
+        if (rules.required) {
+            if (isCheckbox && !value) {
+                return { isValid: false, message: messages.required };
+            }
+            if (!isCheckbox && (!value || value.trim() === '')) {
+                return { isValid: false, message: messages.required };
+            }
+        }
+
+        // Skip other validations if field is empty and not required
+        if (!value || value.trim() === '') {
+            return { isValid: true, message: '' };
+        }
+
+        // Min length validation
+        if (rules.minLength && value.length < rules.minLength) {
+            return { isValid: false, message: messages.minLength };
+        }
+
+        // Pattern validation
+        if (rules.pattern && !rules.pattern.test(value)) {
+            return { isValid: false, message: messages.pattern };
+        }
+
+        return { isValid: true, message: '' };
+    }
+
+    // Show field error
+    function showFieldError(fieldName, message) {
+        const $field = $(`[name="${fieldName}"]`);
+        const $errorSpan = $field.siblings('.dvnt-lienhe__form-error');
+        
+        $field.addClass('dvnt-lienhe__form-input--error');
+        $errorSpan.text(message);
+    }
+
+    // Clear field error
+    function clearFieldError(fieldName) {
+        const $field = $(`[name="${fieldName}"]`);
+        const $errorSpan = $field.siblings('.dvnt-lienhe__form-error');
+        
+        $field.removeClass('dvnt-lienhe__form-input--error');
+        $errorSpan.text('');
+    }
+
+    // Real-time validation
+    $('#contactForm input, #contactForm textarea, #contactForm select').on('blur', function() {
+        const fieldName = $(this).attr('name');
+        const value = $(this).val();
+        const isCheckbox = $(this).attr('type') === 'checkbox';
+        const checkboxValue = isCheckbox ? $(this).is(':checked') : value;
+        
+        const validation = validateField(fieldName, checkboxValue, isCheckbox);
+        
+        if (!validation.isValid) {
+            showFieldError(fieldName, validation.message);
+        } else {
+            clearFieldError(fieldName);
+        }
+    });
+
+    // Input event for immediate feedback
+    $('#contactForm input, #contactForm textarea').on('input', function() {
+        const fieldName = $(this).attr('name');
+        if ($(this).hasClass('dvnt-lienhe__form-input--error')) {
+            const value = $(this).val();
+            const validation = validateField(fieldName, value);
+            
+            if (validation.isValid) {
+                clearFieldError(fieldName);
+            }
+        }
+    });
+
+    // Checkbox change event
+    $('#privacy').on('change', function() {
+        const isChecked = $(this).is(':checked');
+        const validation = validateField('privacy', isChecked, true);
+        
+        if (!validation.isValid) {
+            showFieldError('privacy', validation.message);
+        } else {
+            clearFieldError('privacy');
+        }
+    });
+
+    // Form submission
+    $('#contactForm').on('submit', function(e) {
+        e.preventDefault();
+        
+        // Clear previous messages
+        $('.dvnt-lienhe__message').removeClass('dvnt-lienhe__message--show');
+        
+        // Validate all fields
+        let isFormValid = true;
+        const formData = {};
+        
+        // Validate text inputs and textarea
+        $('#contactForm input[type="text"], #contactForm input[type="email"], #contactForm input[type="tel"], #contactForm textarea, #contactForm select').each(function() {
+            const fieldName = $(this).attr('name');
+            const value = $(this).val();
+            formData[fieldName] = value;
+            
+            const validation = validateField(fieldName, value);
+            
+            if (!validation.isValid) {
+                showFieldError(fieldName, validation.message);
+                isFormValid = false;
+            } else {
+                clearFieldError(fieldName);
+            }
+        });
+        
+        // Validate checkbox
+        const isPrivacyChecked = $('#privacy').is(':checked');
+        formData.privacy = isPrivacyChecked;
+        
+        const privacyValidation = validateField('privacy', isPrivacyChecked, true);
+        if (!privacyValidation.isValid) {
+            showFieldError('privacy', privacyValidation.message);
+            isFormValid = false;
+        } else {
+            clearFieldError('privacy');
+        }
+        
+        if (!isFormValid) {
+            // Scroll to first error
+            const $firstError = $('.dvnt-lienhe__form-input--error').first();
+            if ($firstError.length) {
+                $('html, body').animate({
+                    scrollTop: $firstError.offset().top - 100
+                }, 500);
+            }
+            return;
+        }
+        
+        // Show loading state
+        const $submitButton = $('.dvnt-lienhe__form-button');
+        const originalText = $submitButton.find('.dvnt-lienhe__form-button-text').text();
+        
+        $submitButton.prop('disabled', true);
+        $submitButton.find('.dvnt-lienhe__form-button-text').text('Đang gửi...');
+        $submitButton.find('.dvnt-lienhe__form-button-icon').removeClass('fa-paper-plane').addClass('dvnt-lienhe__loading');
+        
+        // Simulate form submission (replace with actual AJAX call)
+        setTimeout(function() {
+            // Reset button state
+            $submitButton.prop('disabled', false);
+            $submitButton.find('.dvnt-lienhe__form-button-text').text(originalText);
+            $submitButton.find('.dvnt-lienhe__form-button-icon').removeClass('dvnt-lienhe__loading').addClass('fa-paper-plane');
+            
+            // Show success message (simulate success)
+            if (Math.random() > 0.1) { // 90% success rate for demo
+                $('#successMessage').addClass('dvnt-lienhe__message--show');
+                $('#contactForm')[0].reset();
+                
+                // Scroll to success message
+                $('html, body').animate({
+                    scrollTop: $('#successMessage').offset().top - 100
+                }, 500);
+            } else {
+                $('#errorMessage').addClass('dvnt-lienhe__message--show');
+            }
+        }, 2000);
+    });
+
+    // Phone number formatting
+    $('#phone').on('input', function() {
+        let value = $(this).val().replace(/\D/g, '');
+        if (value.length > 11) {
+            value = value.substring(0, 11);
+        }
+        $(this).val(value);
+    });
+
+    // Smooth scrolling for anchor links
+    $('a[href^="#"]').on('click', function(e) {
+        e.preventDefault();
+        const target = $($(this).attr('href'));
+        if (target.length) {
+            $('html, body').animate({
+                scrollTop: target.offset().top - 80
+            }, 800);
+        }
+    });
+
+    // Form animations
+    $('.dvnt-lienhe__form-input, .dvnt-lienhe__form-textarea, .dvnt-lienhe__form-select').on('focus', function() {
+        $(this).parent().addClass('dvnt-lienhe__form-group--focused');
+    });
+
+    $('.dvnt-lienhe__form-input, .dvnt-lienhe__form-textarea, .dvnt-lienhe__form-select').on('blur', function() {
+        $(this).parent().removeClass('dvnt-lienhe__form-group--focused');
+    });
+
+    // Auto-hide messages after 5 seconds
+    $('.dvnt-lienhe__message').on('show', function() {
+        const $message = $(this);
+        setTimeout(function() {
+            $message.removeClass('dvnt-lienhe__message--show');
+        }, 5000);
+    });
+
+    // Intersection Observer for animations (if supported)
+    if ('IntersectionObserver' in window) {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        $('.dvnt-lienhe__info-item, .dvnt-lienhe__form-group').each(function() {
+            this.style.opacity = '0';
+            this.style.transform = 'translateY(20px)';
+            this.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(this);
+        });
+    }
+});
+
+// Additional utility functions
+function showNotification(message, type = 'success') {
+    const notification = $(`
+        <div class="dvnt-lienhe__notification dvnt-lienhe__notification--${type}">
+            <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+            <span>${message}</span>
+            <button class="dvnt-lienhe__notification-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    `);
+    
+    $('body').append(notification);
+    
+    setTimeout(() => {
+        notification.addClass('dvnt-lienhe__notification--show');
+    }, 100);
+    
+    // Auto remove after 5 seconds
+    setTimeout(() => {
+        notification.removeClass('dvnt-lienhe__notification--show');
+        setTimeout(() => notification.remove(), 300);
+    }, 5000);
+    
+    // Manual close
+    notification.find('.dvnt-lienhe__notification-close').on('click', function() {
+        notification.removeClass('dvnt-lienhe__notification--show');
+        setTimeout(() => notification.remove(), 300);
+    });
+}
+
+// Export for potential use in other scripts
+window.ContactForm = {
+    validateField,
+    showNotification
+};
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+</body>
+</html>

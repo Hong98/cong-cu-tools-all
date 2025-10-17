@@ -1,13 +1,9 @@
 .hidden {
     display: none !important;
 }
-<<<<<<< HEAD
-
-=======
 :root {
     --mauxanhtoinen: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
 }
->>>>>>> c19dbcc (Thêm file mới)
 /* ==============================index.html======================== */
 * {
     margin: 0;
@@ -19,14 +15,10 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
-<<<<<<< HEAD
-    color: #333;
-=======
     color: #333;    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
     background-attachment: fixed;
     min-height: 100vh;
     line-height: 1.6;
->>>>>>> c19dbcc (Thêm file mới)
 }
 
 .container {
@@ -1274,15 +1266,6 @@ body {
     top: 0;
     left: 0;
     right: 0;
-<<<<<<< HEAD
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-=======
     -webkit-backdrop-filter: blur(10px);
     background: rgba(15, 23, 42, 0.8);
     backdrop-filter: blur(20px) saturate(180%);
@@ -1292,7 +1275,6 @@ body {
     /* position: sticky; */
     z-index: 1000;
     transition: all 0.3s ease;
->>>>>>> c19dbcc (Thêm file mới)
 }
 
 .doitenhinhanhsticky__container {
@@ -1309,12 +1291,9 @@ body {
 .doitenhinhanhsticky__logo {
     flex-shrink: 0;
     z-index: 1001;
-<<<<<<< HEAD
-=======
     background: #fff;
     border-radius: 50%;
     padding: 4px;
->>>>>>> c19dbcc (Thêm file mới)
 }
 
 .doitenhinhanhsticky__logo-link {
@@ -1329,11 +1308,7 @@ body {
 .doitenhinhanhsticky__logo-image {
     height: 40px;
     width: auto;
-<<<<<<< HEAD
-    margin-right: 10px;
-=======
     /* margin-right: 10px; */
->>>>>>> c19dbcc (Thêm file mới)
 }
 
 .doitenhinhanhsticky__logo-text {
@@ -1364,11 +1339,7 @@ body {
 .doitenhinhanhsticky__mobile-toggle-line {
     width: 100%;
     height: 3px;
-<<<<<<< HEAD
-    background: #333;
-=======
     background: #ffffffff;
->>>>>>> c19dbcc (Thêm file mới)
     transition: all 0.3s ease;
     border-radius: 2px;
     transform-origin: center;
@@ -1409,11 +1380,7 @@ body {
     align-items: center;
     padding: 0.5rem 1rem;
     text-decoration: none;
-<<<<<<< HEAD
-    color: #333;
-=======
     color: #ffffffff;
->>>>>>> c19dbcc (Thêm file mới)
     font-weight: 500;
     transition: all 0.3s ease;
     border-radius: 8px;
@@ -1691,14 +1658,6 @@ html {
 
 /* Header Section */
 .dvnt-lienhe__header {
-<<<<<<< HEAD
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 80px 0;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-=======
     color: white;
     padding: 100px 0;
     text-align: center;
@@ -1706,7 +1665,6 @@ html {
     overflow: hidden;
     background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
     background-attachment: fixed;
->>>>>>> c19dbcc (Thêm file mới)
 }
 
 .dvnt-lienhe__header::before {
@@ -2189,10 +2147,6 @@ html {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: #2d3748;
-<<<<<<< HEAD
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-=======
->>>>>>> c19dbcc (Thêm file mới)
             min-height: 100vh;
         }
 
@@ -2204,12 +2158,8 @@ html {
 
         /* Header */
         .doitenhinhanh__header {
-<<<<<<< HEAD
-            background: rgba(255, 255, 255, 0.95);
-=======
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
             background-attachment: fixed;
->>>>>>> c19dbcc (Thêm file mới)
             backdrop-filter: blur(10px);
             padding: 2rem 0;
             text-align: center;
@@ -2220,11 +2170,7 @@ html {
         .doitenhinhanh__title {
             font-size: 2.5rem;
             font-weight: 700;
-<<<<<<< HEAD
-            color: #2d3748;
-=======
             color: #ffffffff;
->>>>>>> c19dbcc (Thêm file mới)
             margin-bottom: 0.5rem;
             display: flex;
             align-items: center;
@@ -2245,11 +2191,8 @@ html {
         /* Main Content */
         .doitenhinhanh__main {
             padding: 3rem 0;
-<<<<<<< HEAD
-=======
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
             background-attachment: fixed;
->>>>>>> c19dbcc (Thêm file mới)
         }
 
         /* Upload Section */
@@ -2843,11 +2786,7 @@ html {
 
 /* Header Styles - Cải thiện */
 .dvnt-thaydoinen__header {
-<<<<<<< HEAD
-    background: rgba(255, 255, 255, 0.95);
-=======
     Background: var(--mauxanhtoinen);
->>>>>>> c19dbcc (Thêm file mới)
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     padding: 2.5rem 0;
@@ -2857,21 +2796,13 @@ html {
     /* position: sticky; */
     top: 0;
     z-index: 100;
-<<<<<<< HEAD
-    margin-top: 33px;
-=======
     margin-top: 80px;
->>>>>>> c19dbcc (Thêm file mới)
 }
 
 .dvnt-thaydoinen__title {
     font-size: 2.8rem;
     font-weight: 800;
-<<<<<<< HEAD
-    background: linear-gradient(135deg, #667eea, #764ba2);
-=======
     background: linear-gradient(135deg, #ffffffff, #ffffffff);
->>>>>>> c19dbcc (Thêm file mới)
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -2892,10 +2823,7 @@ html {
 /* Main Content */
 .dvnt-thaydoinen__main {
     padding: 4rem 0;
-<<<<<<< HEAD
-=======
     background: var( --mauxanhtoinen);
->>>>>>> c19dbcc (Thêm file mới)
 }
 
 .dvnt-thaydoinen__section-title {
@@ -4586,12 +4514,8 @@ html {
         }
 
         .header {
-<<<<<<< HEAD
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-=======
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
             background-attachment: fixed;
->>>>>>> c19dbcc (Thêm file mới)
             color: white;
             padding: 40px 30px;
             text-align: center;

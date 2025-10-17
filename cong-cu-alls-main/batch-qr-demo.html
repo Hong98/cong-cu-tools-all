@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Batch QR - Quick Demo</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .demo-box {
+            background: white;
+            color: #333;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .feature {
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        .feature h3 {
+            margin: 0 0 10px 0;
+            color: #667eea;
+        }
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 20px 10px 0 0;
+            transition: transform 0.3s ease;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        code {
+            background: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-box">
+        <h1>🚀 Tính Năng Mới: Tạo QR Hàng Loạt</h1>
+        
+        <div class="feature">
+            <h3>📦 Tải File CSV/TXT</h3>
+            <p>Tải file chứa danh sách nội dung (mỗi dòng một QR code). File mẫu: <code>sample-qr-batch.csv</code></p>
+        </div>
+
+        <div class="feature">
+            <h3>✍️ Nhập Thủ Công</h3>
+            <p>Nhập trực tiếp danh sách nội dung, mỗi dòng sẽ tạo thành một mã QR riêng biệt.</p>
+        </div>
+
+        <div class="feature">
+            <h3>👀 Xem Trước</h3>
+            <p>Xem trước tối đa 12 QR code đầu tiên trước khi tạo toàn bộ.</p>
+        </div>
+
+        <div class="feature">
+            <h3>⚙️ Tùy Chỉnh</h3>
+            <p>Chọn định dạng (PNG/JPG/SVG), kích thước, tiền tố tên file và phương thức tải (ZIP hoặc từng file).</p>
+        </div>
+
+        <div class="feature">
+            <h3>📊 Tiến Trình</h3>
+            <p>Thanh tiến trình real-time hiển thị số lượng QR đã tạo và phần trăm hoàn thành.</p>
+        </div>
+
+        <div class="feature">
+            <h3>💾 Tải Xuống</h3>
+            <p>Tải về file ZIP (khuyến nghị) hoặc từng file riêng lẻ với tên tự động: <code>qr_0001.png</code>, <code>qr_0002.png</code>, ...</p>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="taoqr.html" class="btn">🎯 Mở Công Cụ Tạo QR</a>
+            <a href="sample-qr-batch.csv" class="btn" download>📥 Tải File Mẫu</a>
+        </div>
+
+        <hr style="margin: 30px 0; border: none; border-top: 2px solid #e9ecef;">
+
+        <h2 style="text-align: center;">📝 Ví Dụ Nội Dung File CSV</h2>
+        <pre style="background: #f8f9fa; padding: 15px; border-radius: 10px; overflow-x: auto;">
+https://www.google.com
+https://www.facebook.com
+https://www.youtube.com
+Xin chào từ QR Code!
++84901234567
+example@email.com
+https://zalo.me/0901234567
+        </pre>
+
+        <div style="text-align: center; margin-top: 20px; color: #6c757d; font-size: 0.9rem;">
+            <p><strong>💡 Tips:</strong> Mỗi dòng trong file sẽ tạo thành một mã QR riêng biệt.</p>
+            <p><strong>🔒 Bảo mật:</strong> Mọi xử lý đều diễn ra trên máy của bạn, không upload lên server.</p>
+        </div>
+    </div>
+</body>
+</html>
