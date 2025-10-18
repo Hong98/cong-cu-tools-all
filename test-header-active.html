@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Header Active Menu</title>
+    <link rel="stylesheet" href="./asset/css/style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .test-content {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 40px;
+            text-align: center;
+        }
+        .test-content h1 {
+            color: #1a1a2e;
+            margin-bottom: 20px;
+        }
+        .test-content p {
+            color: #64748b;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        .demo-box {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+        .demo-box h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        .demo-box ul {
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+            list-style: none;
+            padding: 0;
+        }
+        .demo-box li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .demo-box li:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header sẽ được load vào đây -->
+    <header class="doitenhinhanhsticky__header" id="doitenhinhanhsticky__header">
+        <!-- render header -->
+    </header>
+
+    <!-- Main Content -->
+    <div class="test-content">
+        <h1>🎯 Test Header Active Menu</h1>
+        <p>Trang này để test tính năng auto-activate menu trong header.</p>
+
+        <div class="demo-box">
+            <h2>📋 Hướng dẫn test:</h2>
+            <ul>
+                <li>✅ <strong>Khi load trang:</strong> Không có menu nào active (vì đây là trang test không có trong menu)</li>
+                <li>✅ <strong>Click vào menu bất kỳ:</strong> Menu đó sẽ active ngay lập tức (visual feedback)</li>
+                <li>✅ <strong>Sau khi chuyển trang:</strong> Menu tương ứng với URL sẽ được active tự động</li>
+                <li>✅ <strong>Click menu trong dropdown:</strong> Cả menu đó và menu cha "Các công cụ khác" đều active</li>
+                <li>✅ <strong>Click logo:</strong> Tất cả menu bỏ active</li>
+            </ul>
+        </div>
+
+        <div class="demo-box" style="margin-top: 20px;">
+            <h2>🔗 Test các link:</h2>
+            <ul>
+                <li><a href="./dinhdanganh.html" style="color: #667eea; text-decoration: none; font-weight: 600;">→ Chuyển Định Dạng Ảnh</a></li>
+                <li><a href="./taoqr.html" style="color: #667eea; text-decoration: none; font-weight: 600;">→ Tạo QR</a></li>
+                <li><a href="./lienhe.html" style="color: #667eea; text-decoration: none; font-weight: 600;">→ Liên hệ</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Load header utility script -->
+    <script src="./asset/js/header-active.js"></script>
+    <script>
+        // Load header and auto-activate current menu
+        loadHeaderWithActiveMenu();
+        
+        // Log để debug
+        console.log('✅ Header loaded with active menu system');
+        console.log('📄 Current page:', window.location.pathname.split('/').pop() || 'index.html');
+    </script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Logo Effects</title>
+    <link rel="stylesheet" href="./asset/css/style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 60px 20px;
+            font-family: 'Inter', Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            padding: 60px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #1a1a2e;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .subtitle {
+            text-align: center;
+            color: #64748b;
+            font-size: 1.25rem;
+            margin-bottom: 60px;
+        }
+        .effects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        .effect-card {
+            background: #f8fafc;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        .effect-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 32px rgba(102, 126, 234, 0.15);
+            border-color: #667eea;
+        }
+        .effect-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.25rem;
+        }
+        .effect-card p {
+            color: #64748b;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .live-demo {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin-top: 60px;
+            border: 3px dashed #667eea;
+        }
+        .live-demo h2 {
+            text-align: center;
+            color: #1a1a2e;
+            margin-bottom: 30px;
+        }
+        .logo-showcase {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 200px;
+            background: linear-gradient(135deg, #667eea10 0%, #764ba210 100%);
+            border-radius: 12px;
+        }
+        .instruction {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border-left: 4px solid #667eea;
+            padding: 20px 30px;
+            border-radius: 12px;
+            margin-top: 40px;
+        }
+        .instruction h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .instruction ul {
+            margin: 0;
+            padding-left: 20px;
+            color: #1a1a2e;
+            line-height: 2;
+        }
+        .instruction li {
+            margin-bottom: 8px;
+        }
+        .emoji {
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1>✨ Logo Effects Demo</h1>
+        <p class="subtitle">Hiệu ứng đặc biệt cho logo DVNT</p>
+
+        <div class="effects-grid">
+            <div class="effect-card">
+                <h3>🎨 Gradient Border Xoay</h3>
+                <p>Border gradient đa màu sắc xoay tròn khi hover, tạo hiệu ứng sống động và hiện đại.</p>
+                <div class="emoji">🌈</div>
+            </div>
+
+            <div class="effect-card">
+                <h3>🎯 Scale & Rotate</h3>
+                <p>Logo phóng to nhẹ và xoay 5 độ khi hover, kèm drop shadow màu gradient tăng cường.</p>
+                <div class="emoji">🔄</div>
+            </div>
+
+            <div class="effect-card">
+                <h3>💫 Entrance Animation</h3>
+                <p>Hiệu ứng xuất hiện khi load trang: zoom + xoay 180° với bounce effect mượt mà.</p>
+                <div class="emoji">🚀</div>
+            </div>
+
+            <div class="effect-card">
+                <h3>✨ Shine Effect</h3>
+                <p>Ánh sáng trắng chạy ngang qua logo khi hover, tạo hiệu ứng bóng loáng sang trọng.</p>
+                <div class="emoji">💎</div>
+            </div>
+
+            <div class="effect-card">
+                <h3>🫧 Pulse Animation</h3>
+                <p>Shadow mờ lan tỏa liên tục như nhịp đập, thu hút sự chú ý một cách tinh tế.</p>
+                <div class="emoji">💓</div>
+            </div>
+
+            <div class="effect-card">
+                <h3>🎭 Smooth Transitions</h3>
+                <p>Tất cả chuyển động sử dụng cubic-bezier cho cảm giác mượt mà, chuyên nghiệp.</p>
+                <div class="emoji">🎬</div>
+            </div>
+        </div>
+
+        <div class="live-demo">
+            <h2>🎪 Live Demo - Di chuột qua logo để xem!</h2>
+            <div class="logo-showcase">
+                <div class="doitenhinhanhsticky__logo">
+                    <a href="./index.html" class="doitenhinhanhsticky__logo-link" aria-label="Trang chủ">
+                        <img src="./asset/img/logodvnt.png" alt="Logo công ty" class="doitenhinhanhsticky__logo-image">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="instruction">
+            <h3><span>📝</span> Hướng dẫn sử dụng:</h3>
+            <ul>
+                <li><strong>✅ Đã tích hợp:</strong> Các hiệu ứng đã được thêm vào file <code>asset/css/style.css</code></li>
+                <li><strong>🎯 Tự động áp dụng:</strong> Tất cả trang có logo sẽ có hiệu ứng này</li>
+                <li><strong>🖱️ Hover để xem:</strong> Di chuột qua logo để thấy gradient border + scale + shine</li>
+                <li><strong>🔄 Reload trang:</strong> Xem hiệu ứng entrance animation khi logo xuất hiện</li>
+                <li><strong>💫 Pulse liên tục:</strong> Shadow nhấp nháy nhẹ quanh logo (tự động, không cần hover)</li>
+            </ul>
+        </div>
+
+        <div class="instruction" style="margin-top: 20px; background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.1)); border-left-color: #10b981;">
+            <h3><span style="color: #10b981;">⚙️</span> Tùy chỉnh (nếu cần):</h3>
+            <ul>
+                <li><strong>Tắt gradient border:</strong> Xóa <code>.doitenhinhanhsticky__logo::before</code></li>
+                <li><strong>Tắt entrance animation:</strong> Xóa <code>animation: logoEntrance</code></li>
+                <li><strong>Tắt pulse:</strong> Xóa <code>animation: logoPulse</code></li>
+                <li><strong>Thay đổi màu:</strong> Sửa gradient trong <code>linear-gradient(...)</code></li>
+                <li><strong>Điều chỉnh tốc độ:</strong> Thay đổi thời gian trong <code>animation</code> (vd: 3s → 2s)</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Log để thông báo
+        console.log('✨ Logo Effects Demo loaded!');
+        console.log('🎨 5 hiệu ứng đã được tích hợp:');
+        console.log('   1. Gradient Border Xoay (hover)');
+        console.log('   2. Scale & Rotate với Shadow (hover)');
+        console.log('   3. Entrance Animation (page load)');
+        console.log('   4. Shine Effect (hover)');
+        console.log('   5. Pulse Animation (continuous)');
+    </script>
+</body>
+</html>

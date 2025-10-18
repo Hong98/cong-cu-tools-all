@@ -19,12 +19,9 @@
     <!-- QRCode.js Library -->
     <script src="https://cdn.jsdelivr.net/npm/@keeex/qrcodejs-kx@1.0.2/qrcode.min.js"></script>
     
-<<<<<<< HEAD
-=======
     <!-- JSZip Library for Batch Download -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     
->>>>>>> c19dbcc (Thêm file mới)
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1250,8 +1247,6 @@
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
-<<<<<<< HEAD
-=======
 /* ========== BATCH QR CODE STYLES ========== */
 .taoQr__batch-header {
     text-align: center;
@@ -1562,7 +1557,6 @@
     color: #667eea;
 }
 
->>>>>>> c19dbcc (Thêm file mới)
 /* Responsive Design MAVN */
 @media (max-width: 1024px) {
     .taoQr__content-wrapper {
@@ -1651,8 +1645,6 @@
     .taoQr__footer-links {
         gap: 24px;
     }
-<<<<<<< HEAD
-=======
     
     /* Batch QR Responsive */
     .taoQr__settings-row {
@@ -1662,7 +1654,6 @@
     .taoQr__preview-list {
         grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     }
->>>>>>> c19dbcc (Thêm file mới)
 }
 
 @media (max-width: 480px) {
@@ -1711,8 +1702,6 @@
         top: 16px;
         max-width: calc(100vw - 32px);
     }
-<<<<<<< HEAD
-=======
     
     /* Batch QR Mobile */
     .taoQr__batch-methods {
@@ -1727,7 +1716,6 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
     }
->>>>>>> c19dbcc (Thêm file mới)
 }
 
 /* Focus States MAVN */
@@ -1792,14 +1780,11 @@
 <header class="doitenhinhanhsticky__header" id="doitenhinhanhsticky__header">
         <!-- render header -->
     </header>
-    <!-- Đoạn scrip render header -->
+    <!-- Load header utility script -->
+    <script src="./asset/js/header-active.js"></script>
     <script>
-        fetch('./templates/header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.querySelector("#doitenhinhanhsticky__header").innerHTML = data;
-            })
-            .catch(error => console.error('Lỗi:', error));
+        // Load header and auto-activate current menu
+        loadHeaderWithActiveMenu();
     </script>
 <body class="taoQr">
     <!-- Background Gradient -->
@@ -1857,13 +1842,11 @@
                         <span class="taoQr__tab-icon">🌐</span>
                         <span class="taoQr__tab-text">Mạng XH</span>
                     </button>
-<<<<<<< HEAD
-=======
+
                     <button class="taoQr__tab" data-type="batch">
                         <span class="taoQr__tab-icon">📦</span>
                         <span class="taoQr__tab-text">Hàng loạt</span>
                     </button>
->>>>>>> c19dbcc (Thêm file mới)
                 </div>
             </section>
 
@@ -2005,9 +1988,6 @@
                                placeholder="username hoặc link đầy đủ">
                         <small class="taoQr__help-text">Nhập username hoặc link đầy đủ của trang mạng xã hội</small>
                     </div>
-
-<<<<<<< HEAD
-=======
                     <!-- Batch QR Form -->
                     <div class="taoQr__form-group" id="batch-form">
                         <div class="taoQr__batch-header">
@@ -2115,14 +2095,15 @@
                         </div>
                     </div>
 
->>>>>>> c19dbcc (Thêm file mới)
                     <button class="taoQr__generate-btn" type="button">
                         <span class="taoQr__btn-icon">⚡</span>
                         <span class="taoQr__btn-text">Tạo Mã QR</span>
                         <div class="taoQr__btn-shine"></div>
                     </button>
-                    <!-- QR Display Section -->
-            <section class="taoQr__result-section">
+                </section>
+
+                <!-- QR Display Section -->
+                <section class="taoQr__result-section">
                 <div class="taoQr__result-container">
                     <h3 class="taoQr__result-title">Mã QR của bạn</h3>
                     
@@ -2184,9 +2165,6 @@
                     </div>
                 </div>
             </section>
-
-                </section>
-
 
                 <!-- Customization Panel -->
                 <section class="taoQr__customization-panel">
@@ -2432,9 +2410,6 @@
         if (type === 'text') this.updateTextMetrics();
       });
 
-      // Generate
-      $('.taoQr__generate-btn').on('click', () => this.generateQR());
-
       // Export
       $(document).on('click', '[data-format]', (e) => this.handleExport(e.currentTarget));
       // Copy/New
@@ -2449,24 +2424,18 @@
       $('#qr-fg-color,#qr-bg-color').on('change', (e) => { 
         this.settings[(e.target.id === 'qr-fg-color') ? 'foregroundColor' : 'backgroundColor'] = e.target.value; 
         this.regenerateQR();
-<<<<<<< HEAD
-=======
         // Update batch preview if on batch tab
         if (this.currentType === 'batch' && this.batchData.length > 0) {
           this.updateBatchPreview();
         }
->>>>>>> c19dbcc (Thêm file mới)
       });
       $('#error-level').on('change', (e) => {
         this.settings.errorLevel = (e.target.value || 'M').toUpperCase();
         this.updateTextMetrics(); this.regenerateQR();
-<<<<<<< HEAD
-=======
         // Update batch preview if on batch tab
         if (this.currentType === 'batch' && this.batchData.length > 0) {
           this.updateBatchPreview();
         }
->>>>>>> c19dbcc (Thêm file mới)
       });
       $('#qr-size').on('change', (e) => {
         this.settings.size = parseInt(e.target.value || '300', 10); this.regenerateQR();
@@ -2475,50 +2444,40 @@
         const v = parseInt(e.target.value, 10);
         this.settings.padding = v; $('#padding-value').text(`${v}px`);
         this.updateWrapperStyle();
-<<<<<<< HEAD
-=======
         // Update batch preview if on batch tab
         if (this.currentType === 'batch' && this.batchData.length > 0) {
           this.updateBatchPreview();
         }
->>>>>>> c19dbcc (Thêm file mới)
       });
       $('#qr-border-radius').on('input', (e) => {
         const v = parseInt(e.target.value, 10);
         this.settings.borderRadius = v; $('#radius-value').text(`${v}px`);
         this.updateWrapperStyle();
-<<<<<<< HEAD
-=======
         // Update batch preview if on batch tab
         if (this.currentType === 'batch' && this.batchData.length > 0) {
           this.updateBatchPreview();
         }
->>>>>>> c19dbcc (Thêm file mới)
       });
       // Preset buttons
       $('.taoQr__preset-btn').on('click', (e) => {
         const $btn = $(e.currentTarget);
         this.applyPreset(parseInt($btn.data('padding')), parseInt($btn.data('radius')));
-<<<<<<< HEAD
-=======
         // Update batch preview if on batch tab
         if (this.currentType === 'batch' && this.batchData.length > 0) {
           this.updateBatchPreview();
         }
->>>>>>> c19dbcc (Thêm file mới)
       });
       // Inputs/char counter
       $('#text-input').on('input', () => this.updateTextMetrics());
       $('#social-platform').on('change', () => this.updateSocialPlaceholder());
-
-<<<<<<< HEAD
-      // Enter form submit
-      $(document).on('keypress', '.taoQr__input, .taoQr__textarea', (e) => {
+      
+      // Enter form submit (chỉ cho input, không cho textarea - trừ batch-textarea cần nhiều dòng)
+      $(document).on('keypress', '.taoQr__input', (e) => {
         if (e.which === 13) { e.preventDefault(); this.generateQR(); }
       });
-=======
-      // Enter form submit (chỉ cho input, không cho textarea)
-      $(document).on('keypress', '.taoQr__input', (e) => {
+      
+      // Enter cho textarea đơn dòng (text-input) - nhưng KHÔNG cho batch-textarea
+      $(document).on('keypress', '.taoQr__textarea:not(#batch-textarea)', (e) => {
         if (e.which === 13) { e.preventDefault(); this.generateQR(); }
       });
 
@@ -2574,7 +2533,6 @@
           this.generateQR();
         }
       });
->>>>>>> c19dbcc (Thêm file mới)
     },
 
     // --------- SOCIAL ---------
@@ -2913,9 +2871,6 @@
       $i.after($('<span class="taoQr__error-message">').text(m)); $i.focus();
     },
     clearErrors() { $('.taoQr__error-message').remove(); $('.taoQr__input--error,.taoQr__textarea--error,.taoQr__select--error').removeClass('taoQr__input--error taoQr__textarea--error taoQr__select--error'); },
-
-<<<<<<< HEAD
-=======
     // ========== BATCH QR FUNCTIONS ==========
     batchData: [],
     
@@ -3310,8 +3265,6 @@
       
       this.downloadBlob(content, `${zipName}.zip`);
     },
-
->>>>>>> c19dbcc (Thêm file mới)
     // --------- INIT ---------
     init() {
       if (typeof QRCode === 'undefined') { this.showToast('❌ Không tải được thư viện QRCode.', 'error'); return; }
@@ -3323,18 +3276,15 @@
       this.showToast('✨ MAVN QR Generator sẵn sàng!', 'success');
     }
   };
-
   // --------- RUN INIT ---------
   window.mavnQRGenerator = MAVNQR;
   MAVNQR.init();
-
   // --------- Error Handler ---------
   $(window).on('error', function (event) {
     console.error('Global error:', event.originalEvent?.error || event.originalEvent);
     MAVNQR.showToast('❌ Có lỗi xảy ra. Vui lòng thử lại.', 'error');
   });
 });
-
     </script>
 </body>
 </html>

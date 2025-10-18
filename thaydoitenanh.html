@@ -183,8 +183,21 @@
 
             bindEvents() {
                 // Upload events
-                this.uploadArea.addEventListener('click', () => this.fileInput.click());
-                this.uploadBtn.addEventListener('click', () => this.fileInput.click());
+                this.uploadArea.addEventListener('click', (e) => {
+                    // Chỉ mở file dialog khi click vào vùng trống, không phải button
+                    if (e.target === this.uploadArea || e.target.closest('.doitenhinhanh__upload-content')) {
+                        // Kiểm tra không phải click vào button
+                        if (!e.target.closest('.doitenhinhanh__upload-btn')) {
+                            this.fileInput.click();
+                        }
+                    }
+                });
+                
+                this.uploadBtn.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Ngăn event bubble lên uploadArea
+                    this.fileInput.click();
+                });
+                
                 this.fileInput.addEventListener('change', (e) => this.handleFileSelect(e));
                 
                 // Drag and drop events
