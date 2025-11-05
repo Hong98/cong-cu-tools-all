@@ -380,16 +380,6 @@
                             <input type="checkbox" id="stripMetadata"> Xóa metadata (giảm dung lượng)
                         </label>
                     </div>
-                    
-                    <!-- Filename Settings -->
-                    <div class="setting-group">
-                        <label for="customFileName">📝 Tên file tải xuống (tùy chọn):</label>
-                        <div class="filename-input-group">
-                            <input type="text" id="customFileName" placeholder="Nhập tên file tùy chỉnh">
-                            <span class="file-extension" id="fileExtension">.png</span>
-                        </div>
-                        <small class="filename-hint">💡 Để trống để sử dụng tên file gốc</small>
-                    </div>
                 </div>
 
                 <!-- Batch Processing -->
@@ -441,7 +431,6 @@
                                 <span id="compressionRatio">-</span>
                             </div>
                         </div>
-                        
                         <div class="download-actions">
                             <button class="download-btn" id="downloadBtn">
                                 📥 Tải xuống
@@ -616,13 +605,8 @@ toggleShowMore() {
         const zip = new JSZip();
         
         this.converter.convertedImages.forEach((result, index) => {
-            // Giữ nguyên tên file gốc, chỉ thay đổi phần mở rộng
-            const originalName = result.originalFile.name;
-            const lastDotIndex = originalName.lastIndexOf('.');
-            const fileName = lastDotIndex !== -1 
-                ? originalName.substring(0, lastDotIndex) + '.' + result.format
-                : originalName + '.' + result.format;
-            
+            // Tên file theo format: dvnt_1.jpg, dvnt_2.jpg, ...
+            const fileName = `dvnt_${index + 1}.${result.format}`;
             const base64Data = result.convertedDataUrl.split(',')[1];
             zip.file(fileName, base64Data, { base64: true });
         });
@@ -634,7 +618,7 @@ toggleShowMore() {
         });
         
         const link = document.createElement('a');
-        link.download = `converted_images_${Date.now()}.zip`;
+        link.download = `dvnt_images_${Date.now()}.zip`;
         link.href = URL.createObjectURL(zipBlob);
         document.body.appendChild(link);
         link.click();
@@ -651,9 +635,7 @@ toggleShowMore() {
 downloadImagesIndividually() {
     this.converter.convertedImages.forEach((result, index) => {
         setTimeout(() => {
-            // Lấy tên file gốc (không có phần mở rộng)
-            const originalName = result.originalFile.name.replace(/\.[^/.]+$/, "");
-            const fileName = `${originalName}.${result.format}`;
+            const fileName = `dvnt_${index + 1}.${result.format}`;
             const link = document.createElement('a');
             link.download = fileName;
             link.href = result.convertedDataUrl;
@@ -1574,16 +1556,6 @@ document.querySelectorAll('.sharpen-preset').forEach(btn => {
     });
 });
 
-// Format change - cập nhật phần mở rộng file
-document.querySelectorAll('input[name="format"]').forEach(radio => {
-    radio.addEventListener('change', (e) => {
-        const fileExtension = document.getElementById('fileExtension');
-        if (fileExtension) {
-            fileExtension.textContent = `.${e.target.value}`;
-        }
-    });
-});
-
     }
 
     processFile(file) {
@@ -1624,17 +1596,6 @@ document.querySelectorAll('input[name="format"]').forEach(radio => {
     displayFileInfo(file) {
         this.fileName.textContent = file.name;
         this.fileSize.textContent = this.formatFileSize(file.size);
-        
-        // Cập nhật placeholder cho tên file tùy chỉnh
-        const customFileNameInput = document.getElementById('customFileName');
-        if (customFileNameInput && file) {
-            const originalName = file.name;
-            const lastDotIndex = originalName.lastIndexOf('.');
-            const nameWithoutExt = lastDotIndex !== -1 
-                ? originalName.substring(0, lastDotIndex)
-                : originalName;
-            customFileNameInput.placeholder = nameWithoutExt;
-        }
         
         this.previewSection.style.display = 'block';
         this.conversionSection.style.display = 'block';
@@ -1837,22 +1798,8 @@ document.querySelectorAll('input[name="format"]').forEach(radio => {
     downloadImage() {
     if (!this.convertedDataUrl) return;
     
-    // Lấy tên file từ input hoặc dùng tên gốc
-    const customFileName = document.getElementById('customFileName').value.trim();
-    let fileName;
-    
-    if (customFileName) {
-        // Nếu người dùng nhập tên tùy chỉnh
-        fileName = `${customFileName}.${this.convertedFormat}`;
-    } else {
-        // Giữ nguyên tên file gốc, chỉ thay đổi phần mở rộng
-        const originalName = this.currentFile.name;
-        const lastDotIndex = originalName.lastIndexOf('.');
-        fileName = lastDotIndex !== -1 
-            ? originalName.substring(0, lastDotIndex) + '.' + this.convertedFormat
-            : originalName + '.' + this.convertedFormat;
-    }
-    
+    // Tên file luôn là "dvnt"
+    const fileName = `dvnt.${this.convertedFormat}`;
     const link = document.createElement('a');
     link.download = fileName;
     link.href = this.convertedDataUrl;
@@ -1870,19 +1817,12 @@ document.querySelectorAll('input[name="format"]').forEach(radio => {
     this.resizeEnabled.checked = false;
     this.resizeInputs.style.display = 'none';
     
-    // Reset sharpen settings
+    // Reset sharpen settings - THÊM NHỮNG DÒNG NÀY
     this.sharpenEnabled.checked = false;
     this.sharpenControl.style.display = 'none';
     this.sharpenControl.classList.remove('show');
     this.sharpenSlider.value = 30;
     this.sharpenValue.textContent = '30';
-    
-    // Reset filename editor
-    const customFileNameInput = document.getElementById('customFileName');
-    if (customFileNameInput) {
-        customFileNameInput.value = '';
-        customFileNameInput.placeholder = 'Nhập tên file tùy chỉnh';
-    }
     
     document.querySelector('input[name="format"][value="png"]').checked = true;
     

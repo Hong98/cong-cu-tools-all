@@ -536,6 +536,143 @@ body {
     margin-top: 25px;
 }
 
+/* Filename Editor */
+.setting-group .filename-input-group {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: white;
+    border: 2px solid #94a3b8;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-top: 10px;
+}
+
+.setting-group .filename-input-group:focus-within {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1), 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+}
+
+.setting-group input[type="text"]#customFileName {
+    flex: 1;
+    padding: 12px 15px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    font-family: 'Courier New', monospace;
+    color: #1e293b;
+    background: transparent;
+}
+
+.setting-group input[type="text"]#customFileName::placeholder {
+    color: #94a3b8;
+    font-style: italic;
+}
+
+.setting-group .file-extension {
+    padding: 12px 15px;
+    background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-weight: 600;
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    white-space: nowrap;
+    box-shadow: -2px 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.setting-group .filename-hint {
+    display: block;
+    margin-top: 8px;
+    color: #64748b;
+    font-size: 0.85rem;
+    font-style: italic;
+}
+
+/* Old Filename Editor styles - keep for backward compatibility */
+.filename-editor {
+    margin: 25px 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    border-radius: 12px;
+    border: 2px solid #cbd5e1;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.filename-editor label {
+    display: block;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.filename-input-group {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: white;
+    border: 2px solid #94a3b8;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.filename-input-group:focus-within {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1), 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+}
+
+.filename-editor input[type="text"] {
+    flex: 1;
+    padding: 12px 15px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    font-family: 'Courier New', monospace;
+    color: #1e293b;
+    background: transparent;
+}
+
+.filename-editor input[type="text"]::placeholder {
+    color: #94a3b8;
+    font-style: italic;
+}
+
+.file-extension {
+    padding: 12px 15px;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+    font-weight: 600;
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    white-space: nowrap;
+    box-shadow: -2px 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.filename-hint {
+    display: block;
+    margin-top: 8px;
+    color: #64748b;
+    font-size: 0.85rem;
+    font-style: italic;
+}
+
 .footer {
     text-align: center;
     color: white;
@@ -613,6 +750,25 @@ body {
     
     .quality-presets, .size-presets {
         justify-content: center;
+    }
+    
+    /* Filename Editor Mobile */
+    .filename-editor {
+        padding: 15px;
+    }
+    
+    .filename-editor label {
+        font-size: 0.9rem;
+    }
+    
+    .filename-editor input[type="text"] {
+        font-size: 0.9rem;
+        padding: 10px 12px;
+    }
+    
+    .file-extension {
+        padding: 10px 12px;
+        font-size: 0.9rem;
     }
 }
 
