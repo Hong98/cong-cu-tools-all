@@ -1271,6 +1271,9 @@
                     <button class="dvntAddIg__button dvntAddIg__button--success" id="downloadZipBtn" style="display: none; background: linear-gradient(135deg, #10b981, #059669);">
                         <span>📦 Tải Xuống ZIP</span>
                     </button>
+                    <button class="dvntAddIg__button dvntAddIg__button--success" id="downloadFolderBtn" style="display: none; background: linear-gradient(135deg, #0ea5e9, #2563eb);">
+                        <span>📂 Lưu vào thư mục</span>
+                    </button>
                     <button class="dvntAddIg__button dvntAddIg__button--secondary" id="resetBatchBtn" style="display: none;">
                         <span>↺ Làm Lại</span>
                     </button>
@@ -1389,6 +1392,10 @@
             DEFAULT_QUALITY: 100,
             DEFAULT_BRIGHTNESS: 100,
             DEFAULT_CONTRAST: 100,
+            ZIP_BATCH_SIZE: 50,
+            ZIP_BATCH_PAUSE: 80,
+            FOLDER_WRITE_BATCH: 25,
+            FOLDER_BATCH_PAUSE: 60,
         };
 
         // ==================== UTILITY FUNCTIONS ====================
@@ -1399,6 +1406,83 @@
             canvasItems: [],
             qrPositions: [], // Store QR positions for each voucher
             eventListeners: [], // Track event listeners for cleanup
+
+            sleep(ms = 0) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            },
+
+            getMimeType(format = 'png') {
+                const normalized = (format || 'png').toLowerCase();
+                if (normalized === 'jpg' || normalized === 'jpeg') {
+                    return 'image/jpeg';
+                }
+                if (normalized === 'png') {
+                    return 'image/png';
+                }
+                return `image/${normalized}`;
+            },
+
+            createMergedCanvas(index) {
+                const voucher = this.batchVouchers[index];
+                const qrImage = this.batchQRs[index];
+
+                if (!voucher || !voucher.img || !qrImage) {
+                    throw new Error('Thiếu dữ liệu voucher hoặc QR để xuất ảnh');
+                }
+
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+
+                canvas.width = voucher.img.width;
+                canvas.height = voucher.img.height;
+
+                // Apply brightness/contrast adjustments if any
+                const brightness = document.getElementById('brightness')?.value || CONSTANTS.DEFAULT_BRIGHTNESS;
+                const contrast = document.getElementById('contrast')?.value || CONSTANTS.DEFAULT_CONTRAST;
+
+                if (brightness != CONSTANTS.DEFAULT_BRIGHTNESS || contrast != CONSTANTS.DEFAULT_CONTRAST) {
+                    ctx.filter = `brightness(${brightness}%) contrast(${contrast}%)`;
+                }
+
+                ctx.drawImage(voucher.img, 0, 0);
+                ctx.filter = 'none';
+
+                const scale = this.calculateScale(voucher.img.width) || 1;
+                const position = this.qrPositions[index];
+
+                if (!position) {
+                    throw new Error('Không tìm thấy vị trí QR tương ứng');
+                }
+
+                const actualX = position.x / scale;
+                const actualY = position.y / scale;
+                const actualSize = position.size / scale;
+
+                ctx.drawImage(qrImage, actualX, actualY, actualSize, actualSize);
+
+                return canvas;
+            },
+
+            async exportVoucherBlob(index, format, quality) {
+                const canvas = this.createMergedCanvas(index);
+                const mimeType = this.getMimeType(format);
+
+                const blob = await new Promise((resolve, reject) => {
+                    canvas.toBlob((result) => {
+                        if (!result) {
+                            reject(new Error('Không thể tạo file ảnh. Hãy giảm kích thước hoặc chất lượng rồi thử lại.'));
+                            return;
+                        }
+                        resolve(result);
+                    }, mimeType, quality);
+                });
+
+                // Help GC reclaim memory ASAP
+                canvas.width = 0;
+                canvas.height = 0;
+
+                return blob;
+            },
 
             // Tab switching
             initTabs() {
@@ -1733,10 +1817,11 @@
                     const format = document.getElementById('outputFormat')?.value || 'png';
                     const quality = (document.getElementById('outputQuality')?.value || CONSTANTS.DEFAULT_QUALITY) / 100;
                     const prefix = document.getElementById('filePrefix')?.value || 'voucher_qr_';
+                    const mimeType = this.getMimeType(format);
 
                     const link = document.createElement('a');
                     link.download = `${prefix}${filename}.${format}`;
-                    link.href = canvas.toDataURL(`image/${format}`, quality);
+                    link.href = canvas.toDataURL(mimeType, quality);
                     link.click();
                     
                     // Cleanup
@@ -2045,6 +2130,7 @@
                 const batchProcessBtn = document.getElementById('batchProcessBtn');
                 const downloadAllBtn = document.getElementById('downloadAllBtn');
                 const downloadZipBtn = document.getElementById('downloadZipBtn');
+                const downloadFolderBtn = document.getElementById('downloadFolderBtn');
                 const resetBtn = document.getElementById('resetBatchBtn');
                 const batchPosition = document.getElementById('batchPosition');
                 const batchSize = document.getElementById('batchSize');
@@ -2064,6 +2150,12 @@
                 if (downloadZipBtn) {
                     downloadZipBtn.addEventListener('click', () => {
                         this.downloadAsZip();
+                    });
+                }
+
+                if (downloadFolderBtn) {
+                    downloadFolderBtn.addEventListener('click', () => {
+                        this.downloadToFolder();
                     });
                 }
 
@@ -2148,6 +2240,7 @@
                 document.getElementById('globalPositionControls').style.display = 'none';
                 document.getElementById('downloadAllBtn').style.display = 'none';
                 document.getElementById('downloadZipBtn').style.display = 'none';
+                document.getElementById('downloadFolderBtn').style.display = 'none';
                 document.getElementById('resetBatchBtn').style.display = 'none';
                 document.getElementById('batchProcessBtn').innerHTML = '<span>Xem Trước & Điều Chỉnh</span>';
                 
@@ -2402,6 +2495,14 @@
                     if (totalItems >= 2) {
                         document.getElementById('downloadZipBtn').style.display = 'inline-flex';
                     }
+
+                    const downloadFolderBtn = document.getElementById('downloadFolderBtn');
+                    if (downloadFolderBtn) {
+                        downloadFolderBtn.style.display = 'inline-flex';
+                        downloadFolderBtn.title = (typeof window !== 'undefined' && typeof window.showDirectoryPicker === 'function')
+                            ? 'Lưu trực tiếp vào thư mục trên máy'
+                            : 'Cần trình duyệt Chrome/Edge mới nhất để sử dụng chức năng này';
+                    }
                     
                     document.getElementById('resetBatchBtn').style.display = 'inline-flex';
                     
@@ -2642,35 +2743,10 @@
                         ((index) => {
                             setTimeout(() => {
                                 try {
-                                    const voucher = this.batchVouchers[index];
-                                    const canvas = document.createElement('canvas');
-                                    const ctx = canvas.getContext('2d');
-                                    
-                                    // Use original image size
-                                    canvas.width = voucher.img.width;
-                                    canvas.height = voucher.img.height;
-                                    
-                                    // Draw voucher
-                                    ctx.drawImage(voucher.img, 0, 0);
-                                    
-                                    // Calculate scale
-                                    const scale = this.calculateScale(voucher.img.width);
-                                
-                                    // Draw QR with adjusted position
-                                    const pos = this.qrPositions[index];
-                                    const actualX = pos.x / scale;
-                                    const actualY = pos.y / scale;
-                                    const actualSize = pos.size / scale;
-                                    
-                                    ctx.drawImage(
-                                        this.batchQRs[index],
-                                        actualX,
-                                        actualY,
-                                        actualSize,
-                                        actualSize
-                                    );
-                                    
-                                    this.downloadImage(canvas, voucher.name);
+                                    const canvas = this.createMergedCanvas(index);
+                                    this.downloadImage(canvas, this.batchVouchers[index].name);
+                                    canvas.width = 0;
+                                    canvas.height = 0;
                                     
                                     completed++;
                                     progressFill.style.width = `${(completed / total) * 100}%`;
@@ -2726,6 +2802,7 @@
                 const progressBar = document.getElementById('batchProgress');
                 const progressFill = document.getElementById('batchProgressBar');
                 progressBar.style.display = 'block';
+                progressFill.style.width = '0%';
 
                 const downloadZipBtn = document.getElementById('downloadZipBtn');
                 const originalHTML = downloadZipBtn.innerHTML;
@@ -2733,54 +2810,31 @@
                 downloadZipBtn.disabled = true;
 
                 const total = this.batchVouchers.length;
+                if (total === 0) {
+                    alert('Chưa có voucher nào để tải xuống.');
+                    progressBar.style.display = 'none';
+                    downloadZipBtn.innerHTML = originalHTML;
+                    downloadZipBtn.disabled = false;
+                    return;
+                }
+
                 const zip = new JSZip();
                 const format = document.getElementById('outputFormat')?.value || 'png';
+                const quality = (document.getElementById('outputQuality')?.value || CONSTANTS.DEFAULT_QUALITY) / 100;
+                const prefix = document.getElementById('filePrefix')?.value || 'voucher_qr_';
 
                 try {
-                    // Process all images and add to ZIP
                     for (let index = 0; index < total; index++) {
-                        const voucher = this.batchVouchers[index];
-                        const canvas = document.createElement('canvas');
-                        const ctx = canvas.getContext('2d');
-                        
-                        // Use original image size
-                        canvas.width = voucher.img.width;
-                        canvas.height = voucher.img.height;
-                        
-                        // Draw voucher
-                        ctx.drawImage(voucher.img, 0, 0);
-                        
-                        // Calculate scale
-                        const scale = this.calculateScale(voucher.img.width);
-                        
-                        // Draw QR with adjusted position
-                        const pos = this.qrPositions[index];
-                        const actualX = pos.x / scale;
-                        const actualY = pos.y / scale;
-                        const actualSize = pos.size / scale;
-                        
-                        ctx.drawImage(
-                            this.batchQRs[index],
-                            actualX,
-                            actualY,
-                            actualSize,
-                            actualSize
-                        );
-                        
-                        // Convert canvas to blob
-                        const quality = (document.getElementById('outputQuality')?.value || 95) / 100;
-                        const blob = await new Promise(resolve => {
-                            canvas.toBlob(resolve, `image/${format}`, quality);
-                        });
-                        
-                        // Add to ZIP with filename
-                        const prefix = document.getElementById('filePrefix')?.value || 'voucher_qr_';
-                        const filename = `${prefix}${voucher.name}.${format}`;
+                        const blob = await this.exportVoucherBlob(index, format, quality);
+                        const filename = `${prefix}${this.batchVouchers[index].name}.${format}`;
                         zip.file(filename, blob);
-                        
-                        // Update progress
+
                         progressFill.style.width = `${((index + 1) / total) * 100}%`;
                         downloadZipBtn.innerHTML = `<div class="dvntAddIg__loading"></div> <span>Đang xử lý ${index + 1}/${total}...</span>`;
+
+                        if ((index + 1) % CONSTANTS.ZIP_BATCH_SIZE === 0) {
+                            await this.sleep(CONSTANTS.ZIP_BATCH_PAUSE);
+                        }
                     }
 
                     // Generate ZIP file
@@ -2831,6 +2885,89 @@
                     progressBar.style.display = 'none';
                     downloadZipBtn.innerHTML = originalHTML;
                     downloadZipBtn.disabled = false;
+                }
+            },
+
+            // Download images straight into a user-selected folder (File System Access API)
+            async downloadToFolder() {
+                const progressBar = document.getElementById('batchProgress');
+                const progressFill = document.getElementById('batchProgressBar');
+                const folderBtn = document.getElementById('downloadFolderBtn');
+
+                if (!folderBtn) return;
+
+                if (typeof window === 'undefined' || typeof window.showDirectoryPicker !== 'function') {
+                    alert('Trình duyệt của bạn chưa hỗ trợ lưu trực tiếp vào thư mục. Vui lòng dùng Chrome/Edge mới nhất hoặc tải dạng ZIP.');
+                    return;
+                }
+
+                const total = this.batchVouchers.length;
+                if (total === 0) {
+                    alert('Chưa có voucher nào để tải xuống.');
+                    return;
+                }
+
+                const format = document.getElementById('outputFormat')?.value || 'png';
+                const quality = (document.getElementById('outputQuality')?.value || CONSTANTS.DEFAULT_QUALITY) / 100;
+                const prefix = document.getElementById('filePrefix')?.value || 'voucher_qr_';
+
+                const originalHTML = folderBtn.innerHTML;
+                folderBtn.disabled = true;
+                folderBtn.innerHTML = '<div class="dvntAddIg__loading"></div> <span>Đang lưu vào thư mục...</span>';
+                progressBar.style.display = 'block';
+                progressFill.style.width = '0%';
+
+                try {
+                    const rootHandle = await window.showDirectoryPicker({ id: 'dvnt-qr-output', mode: 'readwrite' });
+                    const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, -5);
+                    const exportDir = await rootHandle.getDirectoryHandle(`voucher_qr_${timestamp}`, { create: true });
+
+                    for (let index = 0; index < total; index++) {
+                        const blob = await this.exportVoucherBlob(index, format, quality);
+                        const filename = `${prefix}${this.batchVouchers[index].name}.${format}`;
+                        const fileHandle = await exportDir.getFileHandle(filename, { create: true });
+                        const writable = await fileHandle.createWritable();
+                        await writable.write(blob);
+                        await writable.close();
+
+                        progressFill.style.width = `${((index + 1) / total) * 100}%`;
+                        folderBtn.innerHTML = `<div class="dvntAddIg__loading"></div> <span>Lưu ${index + 1}/${total}...</span>`;
+
+                        if ((index + 1) % CONSTANTS.FOLDER_WRITE_BATCH === 0) {
+                            await this.sleep(CONSTANTS.FOLDER_BATCH_PAUSE);
+                        }
+                    }
+
+                    setTimeout(() => {
+                        progressBar.style.display = 'none';
+                        folderBtn.innerHTML = originalHTML;
+                        folderBtn.disabled = false;
+
+                        const notification = document.createElement('div');
+                        notification.style.cssText = 'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #0ea5e9; color: white; padding: 2rem 3rem; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); z-index: 9999; font-size: 1.1rem; font-weight: 600; text-align: center;';
+                        notification.innerHTML = `
+                            <div style="font-size: 3rem; margin-bottom: 0.25rem;">📂</div>
+                            <div>Đã lưu ${total} ảnh vào thư mục</div>
+                            <div style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.85;">Thư mục con: voucher_qr_${timestamp}</div>
+                        `;
+                        document.body.appendChild(notification);
+
+                        setTimeout(() => notification.remove(), 3000);
+                    }, 400);
+
+                } catch (error) {
+                    if (error.name === 'AbortError') {
+                        folderBtn.innerHTML = originalHTML;
+                        folderBtn.disabled = false;
+                        progressBar.style.display = 'none';
+                        return;
+                    }
+
+                    console.error('Error when saving to folder:', error);
+                    alert('Không thể lưu vào thư mục: ' + error.message);
+                    progressBar.style.display = 'none';
+                    folderBtn.innerHTML = originalHTML;
+                    folderBtn.disabled = false;
                 }
             },
 
