@@ -234,12 +234,17 @@
 
 /* Content Wrapper - 2 column layout */
 .taoQr__content-wrapper {
-    display: grid;
+    /* display: grid; */
+    display: flex;
     grid-template-columns: 1fr 380px;
     gap: 40px;
     margin-bottom: 60px;
 }
-
+@media (max-width: 1199.98px) {
+    .taoQr__content-wrapper {
+        display: grid;
+    }
+}
 /* Input Section với glass morphism */
 .taoQr__input-section {
     background: rgba(255, 255, 255, 0.95);
@@ -927,11 +932,83 @@
     gap: 24px;
 }
 
+.taoQr__download-card {
+    border: 2px dashed rgba(102, 126, 234, 0.25);
+    border-radius: 20px;
+    padding: 24px;
+    background: rgba(102, 126, 234, 0.05);
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.taoQr__download-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.taoQr__download-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.taoQr__download-icon {
+    font-size: 1.75rem;
+    filter: drop-shadow(0 2px 6px rgba(102, 126, 234, 0.35));
+}
+
+.taoQr__download-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.taoQr__download-label {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1a1a2e;
+}
+
+.taoQr__download-hint {
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+.taoQr__download-pill {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 6px 18px rgba(102, 126, 234, 0.25);
+}
+
+.taoQr__download-note {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
 .taoQr__export-buttons {
     display: flex;
     justify-content: center;
     gap: 12px;
     flex-wrap: wrap;
+}
+
+.taoQr__action-hint {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #94a3b8;
+    font-weight: 500;
 }
 
 .taoQr__action-buttons {
@@ -2129,26 +2206,41 @@
                     </div>
 
                     <div class="taoQr__actions" style="display: none;">
-                        <div class="taoQr__export-buttons">
-                            <button class="taoQr__action-btn taoQr__action-btn--png" type="button" data-format="png">
-                                <span class="taoQr__btn-icon">🖼️</span>
-                                <span class="taoQr__btn-text">PNG</span>
-                            </button>
-                            
-                            <button class="taoQr__action-btn taoQr__action-btn--jpg" type="button" data-format="jpg">
-                                <span class="taoQr__btn-icon">📷</span>
-                                <span class="taoQr__btn-text">JPG</span>
-                            </button>
-                            
-                            <button class="taoQr__action-btn taoQr__action-btn--svg" type="button" data-format="svg">
-                                <span class="taoQr__btn-icon">📐</span>
-                                <span class="taoQr__btn-text">SVG</span>
-                            </button>
-                            
-                            <button class="taoQr__action-btn taoQr__action-btn--pdf" type="button" data-format="pdf">
-                                <span class="taoQr__btn-icon">📄</span>
-                                <span class="taoQr__btn-text">PDF</span>
-                            </button>
+                        <div class="taoQr__download-card">
+                            <div class="taoQr__download-header">
+                                <div class="taoQr__download-title">
+                                    <span class="taoQr__download-icon">⬇️</span>
+                                    <div class="taoQr__download-text">
+                                        <span class="taoQr__download-label">Tải xuống mã QR</span>
+                                        <span class="taoQr__download-hint">Chọn định dạng phù hợp để xuất file</span>
+                                    </div>
+                                </div>
+                                <span class="taoQr__download-pill">Xuất file</span>
+                            </div>
+
+                            <div class="taoQr__export-buttons">
+                                <button class="taoQr__action-btn taoQr__action-btn--png" type="button" data-format="png">
+                                    <span class="taoQr__btn-icon">🖼️</span>
+                                    <span class="taoQr__btn-text">PNG</span>
+                                </button>
+                                
+                                <button style="display: none;"  class="taoQr__action-btn taoQr__action-btn--jpg" type="button" data-format="jpg">
+                                    <span class="taoQr__btn-icon">📷</span>
+                                    <span class="taoQr__btn-text">JPG</span>
+                                </button>
+                                
+                                <button style="display: none;" class="taoQr__action-btn taoQr__action-btn--svg" type="button" data-format="svg">
+                                    <span class="taoQr__btn-icon">📐</span>
+                                    <span class="taoQr__btn-text">SVG</span>
+                                </button>
+                                
+                                <button style="display: none;"  class="taoQr__action-btn taoQr__action-btn--pdf" type="button" data-format="pdf">
+                                    <span class="taoQr__btn-icon">📄</span>
+                                    <span class="taoQr__btn-text">PDF</span>
+                                </button>
+                            </div>
+
+                            <p class="taoQr__download-note">Định dạng PNG/JPG phù hợp online, SVG/PDF tối ưu in ấn.</p>
                         </div>
                         
                         <div class="taoQr__action-buttons">
@@ -2162,6 +2254,8 @@
                                 <span class="taoQr__btn-text">Tạo mới</span>
                             </button>
                         </div>
+
+                        <p class="taoQr__action-hint">Sao chép nội dung hoặc tạo mã mới chỉ với một chạm.</p>
                     </div>
                 </div>
             </section>
