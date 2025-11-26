@@ -20,7 +20,7 @@
    - Phương thức tải (ZIP hoặc từng file)
 7. Click **"Tạo Mã QR"**
 8. Chờ tiến trình hoàn thành
-9. Tải về file ZIP hoặc các file riêng lẻ
+9. Tải về file ZIP hoặc các file riêng lẻ.
 
 ### Phương pháp 2: Nhập thủ công
 
